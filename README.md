@@ -1,7 +1,7 @@
 # popcorn-time-snap
 snap definition for Popcorn-Time
 
-Build and install:
+### Build and install:
 ```
 cd Downloads/
 git clone https://github.com/faveoled/popcorn-time-snap
