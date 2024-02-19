@@ -1,5 +1,6 @@
 # popcorn-time-snap
 snap definition for Popcorn-Time
+
 Build and install:
 ```
 cd Downloads/
