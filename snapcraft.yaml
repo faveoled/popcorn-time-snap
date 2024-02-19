@@ -1,0 +1,45 @@
+name: popcorn-time
+summary: S
+description: |
+  D
+version: '0.5.0'
+grade: stable
+confinement: strict
+base: core22
+icon: snap/gui/icon.png
+
+architectures:
+  - build-on: [amd64]
+
+parts:
+  popcorn-time:
+    plugin: dump
+    source: https://github.com/popcorn-official/popcorn-desktop/releases/download/v0.5.0/Popcorn-Time-0.5.0-amd64.deb
+    # not sure if needed
+    stage-packages:
+      - libnss3
+      - libnspr4
+    override-prime: |
+      craftctl default
+      chmod -R 755 opt/Popcorn-Time
+
+apps:
+  popcorn-time:
+    extensions: [gnome]
+    command: opt/Popcorn-Time/Popcorn-Time
+    desktop: usr/share/applications/Popcorn-Time.desktop
+    plugs:
+      - home
+      - network
+      - audio-playback
+      - browser-support
+      - upower-observe
+      - screen-inhibit-control
+      - mpris
+    environment:
+      # not sure if needed for NW.js
+      # Correct the TMPDIR path for Chromium Framework/Electron to ensure
+      # libappindicator has readable resources.
+      TMPDIR: $XDG_RUNTIME_DIR
+
+
